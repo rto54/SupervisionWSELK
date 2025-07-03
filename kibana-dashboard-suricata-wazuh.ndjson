@@ -1,0 +1,24 @@
+
+{"type":"index-pattern","id":"suricata-*","attributes":{"title":"suricata-*","timeFieldName":"timestamp"}}
+{"type":"index-pattern","id":"wazuh-alerts-*","attributes":{"title":"wazuh-alerts-*","timeFieldName":"timestamp"}}
+
+{"type":"visualization","id":"top-wazuh-alerts","attributes":{"title":"Top types d'alertes Wazuh","visState":"{"type":"pie","aggs":[{"id":"1","type":"count","schema":"metric"},{"id":"2","type":"terms","schema":"segment","params":{"field":"rule.description.keyword","size":5}}],"title":"Top types d'alertes Wazuh"}","uiStateJSON":"{}","version":1,"kibanaSavedObjectMeta":{"searchSourceJSON":"{"index":"wazuh-alerts-*"}"}}
+
+{"type":"visualization","id":"top-wazuh-agents","attributes":{"title":"Agents Wazuh les plus bruyants","visState":"{"type":"bar","aggs":[{"id":"1","type":"count","schema":"metric"},{"id":"2","type":"terms","schema":"segment","params":{"field":"agent.name.keyword","size":5}}],"title":"Agents Wazuh les plus bruyants"}","uiStateJSON":"{}","version":1,"kibanaSavedObjectMeta":{"searchSourceJSON":"{"index":"wazuh-alerts-*"}"}}
+
+{"type":"visualization","id":"alertes-critiques","attributes":{"title":"Alertes critiques (Suricata)","visState":"{"type":"table","aggs":[{"id":"1","type":"count","schema":"metric"}],"title":"Alertes critiques"}","uiStateJSON":"{}","version":1,"kibanaSavedObjectMeta":{"searchSourceJSON":"{"index":"suricata-*","query":{"query":"alert.severity:[10 TO *]","language":"kuery"}}"}}
+
+{"type":"visualization","id":"dest-ip-top10","attributes":{"title":"Top 10 IP destination","visState":"{"type":"table","aggs":[{"id":"1","type":"count","schema":"metric"},{"id":"2","type":"terms","schema":"bucket","params":{"field":"dest_ip.keyword","size":10}}],"title":"Top 10 IP destination"}","uiStateJSON":"{}","version":1,"kibanaSavedObjectMeta":{"searchSourceJSON":"{"index":"suricata-*"}"}}
+
+{"type":"dashboard","id":"supervision-complete","attributes":{
+"title":"Supervision complète (Suricata + Wazuh)",
+"panelsJSON":"[
+{"panelIndex":"1","gridData":{"x":0,"y":0,"w":12,"h":8,"i":"1"},"type":"visualization","id":"alertes-critiques"},
+{"panelIndex":"2","gridData":{"x":12,"y":0,"w":12,"h":8,"i":"2"},"type":"visualization","id":"dest-ip-top10"},
+{"panelIndex":"3","gridData":{"x":0,"y":8,"w":12,"h":8,"i":"3"},"type":"visualization","id":"top-wazuh-alerts"},
+{"panelIndex":"4","gridData":{"x":12,"y":8,"w":12,"h":8,"i":"4"},"type":"visualization","id":"top-wazuh-agents"}
+]",
+"description":"Tableau de bord unifié : activité réseau (Suricata) + alertes système (Wazuh)",
+"optionsJSON":"{"darkTheme":false}",
+"version":1
+}}
