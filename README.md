@@ -46,6 +46,14 @@ chmod +x install-elk-suricata.sh
 sudo ./install-elk-suricata.sh
 ```
 
+## 🧰 Déploiement Agent Wazuh (Linux)
+
+
+```bash
+chmod +x install-elk-suricata.sh
+sudo ./install-elk-suricata.sh
+```
+
 ---
 
 ## 🌐 Accès Kibana
